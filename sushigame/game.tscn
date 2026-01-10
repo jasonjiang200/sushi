@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds78kfcjb3upo"]
+
+[ext_resource type="Script" uid="uid://cdom2xup2kh0" path="res://belt.gd" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bg0bbdrm7cwyq" path="res://plate_spawner.gd" id="2_feb5d"]
+[ext_resource type="PackedScene" uid="uid://vx42eb448p40" path="res://sushi_plate.tscn" id="3_fc0e3"]
+[ext_resource type="Script" uid="uid://doe280mm127u6" path="res://grab_zone.gd" id="4_fc0e3"]
+[ext_resource type="Script" uid="uid://cy3o0yli7ie30" path="res://player.gd" id="5_7jktm"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Belt" type="Node2D" parent="."]
+script = ExtResource("1_80nbo")
+
+[node name="ColorRect" type="ColorRect" parent="Belt"]
+offset_left = -400.0
+offset_top = -40.0
+offset_right = 400.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.64705884, 0.64705884, 0.6862745, 1)
+
+[node name="PlateSpawner" type="Node2D" parent="."]
+script = ExtResource("2_feb5d")
+plate_scene = ExtResource("3_fc0e3")
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("5_7jktm")
+
+[node name="GrabZone" type="Node2D" parent="."]
+script = ExtResource("4_fc0e3")
+
+[node name="ColorRect" type="ColorRect" parent="GrabZone"]
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.92951, 0.2713551, 0.4539281, 0.29803923)
