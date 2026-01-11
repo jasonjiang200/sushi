@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0tu5jlfcvta5"]
+
+[sub_resource type="GDScript" id="GDScript_uebnx"]
+script/source = "extends Control
+
+# Export the path to your Game scene
+@export var game_scene_path := \"res://Game.tscn\"
+@onready var next_button = $NextLevelButton
+@onready var level_label = $LevelLabel
+
+
+func _ready():
+	level_label.text = \"Level %d\" % GameState.current_level
+	
+func _on_next_level_button_pressed() -> void:
+		get_tree().change_scene_to_file(game_scene_path)
+"
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_uebnx")
+
+[node name="NextLevelButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 400.0
+offset_right = 940.0
+offset_bottom = 550.0
+text = "Next Level"
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="NextLevelButton" to="." method="_on_next_level_button_pressed"]
