@@ -20,3 +20,5 @@ func _process(delta):
 				if plate.has_method("eat"):
 					plate.eat(player)
 					break
+	if Input.is_action_just_pressed("s") and player.s_power_ready:
+		player.activate_s_power()

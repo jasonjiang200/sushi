@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds78kfcjb3upo"]
+[gd_scene load_steps=7 format=3 uid="uid://ds78kfcjb3upo"]
 
 [ext_resource type="Script" uid="uid://cdom2xup2kh0" path="res://belt.gd" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bg0bbdrm7cwyq" path="res://plate_spawner.gd" id="2_feb5d"]
 [ext_resource type="PackedScene" uid="uid://vx42eb448p40" path="res://sushi_plate.tscn" id="3_fc0e3"]
 [ext_resource type="Script" uid="uid://doe280mm127u6" path="res://grab_zone.gd" id="4_fc0e3"]
 [ext_resource type="Script" uid="uid://cy3o0yli7ie30" path="res://player.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://33vjy0doulao" path="res://stomach_bar.gd" id="6_ryrav"]
 
 [node name="Game" type="Node2D"]
 
@@ -36,3 +37,14 @@ offset_right = 60.0
 offset_bottom = 60.0
 mouse_filter = 2
 color = Color(0.92951, 0.2713551, 0.4539281, 0.29803923)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StomachBar" type="ProgressBar" parent="UI"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 47.0
+step = 0.1
+script = ExtResource("6_ryrav")
+player_path = NodePath("../../Player")

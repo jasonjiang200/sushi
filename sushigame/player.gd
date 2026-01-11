@@ -1,5 +1,6 @@
 extends Node2D
 
+signal stomach_changed(current)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,14 +24,13 @@ var mode := Mode.EAT
 var s_power_ready := true
 
 func eat(amount):
-	stomach += amount
-	stomach = min(stomach, stomach_max)
+	stomach = clamp(stomach + amount, 0, stomach_max)
+	emit_signal("stomach_changed", stomach)
 	print("Stomach:", stomach)
 
 func activate_s_power():
 	if s_power_ready:
 		print("S Power activated!")
-		# Example effect: restore some stomach
-		stomach -= 30
-		stomach = max(0, stomach)
+		eat(-30)
 		s_power_ready = false
+		

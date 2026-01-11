@@ -6,7 +6,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-@export var value := 10
 @export var fill := 15
 
 @export var speed := 200.0
