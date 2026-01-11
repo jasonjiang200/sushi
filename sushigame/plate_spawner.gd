@@ -22,7 +22,9 @@ func _process(delta):
 func spawn_plate():
 	if plate_scene == null:
 		return
-
 	var plate = plate_scene.instantiate()
+	# Randomly pick sushi type
+	var type = "tuna" if randi() % 5 == 0 else "salmon"
+	plate.sushi_type = type
 	plate.position = Vector2(spawn_x, spawn_y)
 	add_child(plate)
